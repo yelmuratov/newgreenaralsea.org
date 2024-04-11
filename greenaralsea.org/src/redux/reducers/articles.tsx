@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 interface ArticlesState {
-  value: number
+  value: number,
+
 }
 
 const initialState: ArticlesState = {

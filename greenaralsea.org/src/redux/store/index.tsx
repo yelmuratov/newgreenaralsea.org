@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import paysys from '../reducers/paysys'
 import articles from '../reducers/articles'
+import DonaterSlice from '../reducers/donaters'
 
 export const store = configureStore({
   reducer: {
     paysys,
     articles,
+    DonaterSlice,
   },
 })
 

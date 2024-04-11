@@ -1,3 +1,7 @@
 export {default as Root} from '../layout/root'
 export {default as Home} from '../pages/home'
 export {default as Contact} from '../pages/contact'
+export {default as YouTubeEmbed} from  './i-frame'
+export {default as ListItem} from  './list-item'
+export {default as NewsCard} from  './newsCard'
+export {default as Partner} from  './partner'
