@@ -9,6 +9,9 @@ import './i18n/i18n.tsx'
 // Styles
 import './index.css'
 import News from './pages/news.tsx';
+import OurTeam from './pages/ourteam.tsx';
+import Faq from './pages/faq.tsx';
+import Whereweplant from './pages/whereweplant.tsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +21,9 @@ const router = createBrowserRouter([
       { path: '/', element: <Home /> },
       { path: '/contact', element: <Contact /> },
       { path: '/news', element: <News /> },
+      { path: '/ourteam', element: <OurTeam /> },
+      { path: '/faq', element: <Faq /> },
+      { path: '/whereweplant', element: <Whereweplant /> },
     ],
   }
 ]);

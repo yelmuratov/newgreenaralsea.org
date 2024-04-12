@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 // Define an interface for the component props
 interface IList {
@@ -39,6 +40,8 @@ const ListItem: React.FC<IList> = (props) => {
     else if (amount > 500)
       return 1000
   }
+
+  const { t } = useTranslation('');
   
   return (
     <div className="relative flex flex-col bg-white border shadow rounded-xl mb-3 w-full bg-clip-border">
@@ -64,7 +67,7 @@ const ListItem: React.FC<IList> = (props) => {
           </div>
           <button aria-label={`${props.trees} trees planted`} tabIndex={0}
             className={`relative overflow-hidden border rounded-xl md:h-12 md:w-20 w-24 h-8 lg:w-32 lg:h-16 lg:font-bold text-white shadow-2xl transition-all ${props.trees > 500 ? "bg-[#7d58e7] border-[#7d58e7]" : "bg-green-500"} hover:shadow-lg before:absolute before:right-0 before:top-0 before:h-12 before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-10 before:duration-700 hover:before:-translate-x-40`}>
-            <span className="relative z-10 text-[12px] md:text-[12px] lg:text-xl">{props.trees} trees</span>
+            <span className="relative z-10 text-[12px] md:text-[12px] lg:text-xl">{props.trees} {t("tree")}</span>
           </button>
         </div>
       </nav>

@@ -1,12 +1,14 @@
 import { useAppSelector } from "../hooks/hooks"
 import { NewsCard } from "../components";
 import Skeleton from "react-loading-skeleton";
+import { useTranslation } from "react-i18next";
 
 const News = () => {
   const selectedArticle = useAppSelector((state) => state.microServices.selectedArticle);
   const news = useAppSelector((state) => state.microServices.news);
   const articlesLoading = useAppSelector((state) => state.microServices.isArticlesLoading);
 
+  const {t} = useTranslation();
   return (
     selectedArticle?
     <>
@@ -26,7 +28,7 @@ const News = () => {
     </div>
     <section data-aos="fade-up" className="news mt-16 pb-24 border-b mb-12">
     <div className="container mx-auto px-8" data-aos="fade-up">
-      <h1 className="text-[35px] roboto-bold mb-8 md:mb-4">Aral News</h1>
+      <h1 className="text-[35px] roboto-bold mb-8 md:mb-4">{t('news')}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {news.map((article, indx) => (
           articlesLoading? <Skeleton key={indx} height={300}/>: <NewsCard article={article} key={indx} />
@@ -36,9 +38,9 @@ const News = () => {
     <div id="transforming"></div>
   </section>
     </>:
-    <section data-aos="fade-up" className="news mt-16 pb-24 border-b mb-12">
+    <section data-aos="fade-up" className="news mt-24 pb-24 border-b mb-12">
     <div className="container mx-auto px-8" data-aos="fade-up">
-      <h1 className="text-[35px] roboto-bold mb-8 md:mb-4">Aral News</h1>
+      <h1 className="text-[35px] roboto-bold mb-8 md:mb-4">{t("news")}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {news.map((article, indx) => (
           articlesLoading? <Skeleton key={indx} height={300}/>: <NewsCard article={article} key={indx} />

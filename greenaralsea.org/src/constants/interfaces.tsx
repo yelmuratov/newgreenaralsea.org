@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface Idonater {
     amount: string,
     created: string,
@@ -28,6 +29,12 @@ interface IPartners {
     logo: string
 }
 
+interface IFAQ {
+    question: string,
+    answer: string
+}
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface IMicroService {
     totalTrees: number,
     YoutubeVideo: IVideos[],
@@ -39,4 +46,13 @@ interface IMicroService {
     isArticlesLoading?: boolean,
     isArticlesFailed?: boolean,
     selectedArticle?: INews | null,
+    faq:IFAQ[],
+    teamembers:IMember[]
   }
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  interface IMember {
+    name: string,
+    description: string,
+    avatar: string,
+}

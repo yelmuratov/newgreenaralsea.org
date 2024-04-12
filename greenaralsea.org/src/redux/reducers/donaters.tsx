@@ -14,7 +14,6 @@ const initialState: Donaters = {
   isLoading: false,
   isFailed: false,
   donaters: [],
-
 }
 
 interface IArgs {
