@@ -1,15 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from "../../axios/api";
 
-interface PaysysState {
-  donationModal: boolean,
-  confirmationModal: boolean,
-  donationDetails: IDonationDetails
-  transActionDetails: ITransactionDetails,
-  isDonationLoading: boolean,
-  isDonationFailed: boolean,
-}
-
 const  initialState: PaysysState = {
   donationModal: false,
   confirmationModal: false,
@@ -34,10 +25,8 @@ const  initialState: PaysysState = {
     MERCHANT_TRANS_RETURN_URL: "",
     SIGN_TIME: '',
     SIGN_STRING: ""
-    
   },
 }
-
 
 export const createDonation = createAsyncThunk(
   "fetch/CreateDonate",
@@ -71,8 +60,8 @@ export const makePayment = createAsyncThunk(
   'payment/makePayment', // Action type prefix
   async (data: ITransactionDetails, { rejectWithValue }) => {
     try {
-      const proxyUrl = "https://cors-anywhere.herokuapp.com/"; // CORS Proxy
-      const targetUrl = "https://agr.uz/pay"; // Your target URL
+      const proxyUrl = import.meta.env.VITE_APP_PROXY_URL; // CORS Proxy
+      const payUrl = import.meta.env.VITE_APP_PAYMENT_URL; // Your target URL
       const formData = new URLSearchParams({
         VENDOR_ID: data.VENDOR_ID,
         MERCHANT_TRANS_ID: `${data.MERCHANT_TRANS_ID}`,
@@ -85,10 +74,10 @@ export const makePayment = createAsyncThunk(
         SIGN_STRING: `${data.SIGN_STRING}`
       });
 
-      const response = await axios.post(proxyUrl + targetUrl, formData);
+      const response = await axios.post(proxyUrl + payUrl, formData);
 
       if (response.status === 200) {
-        const url = `${targetUrl}?${formData.toString()}`;
+        const url = `${payUrl}?${formData.toString()}`;
         // Redirect the user to the payment page or a success page
         window.location.href = url; // Ensure this is the intended URL for redirection
         return response.data;

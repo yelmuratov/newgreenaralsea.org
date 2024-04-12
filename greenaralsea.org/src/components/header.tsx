@@ -10,16 +10,17 @@ import { setModal } from "../redux/reducers/paysys";
 
 function Header() {
     const [scroll, setScroll] = useState(false);
-    const [language, setLanguage] = useState(['en']);
+    const [language, setLanguage] = useState(localStorage.getItem('lng') || 'en');
 
     const {i18n,t} = useTranslation();   
 
     const languageChange = (lng: string) => {
         i18n.changeLanguage(lng);
-    }
+    };
 
     useEffect(() => {
-        languageChange(language[0]);
+        languageChange(language);
+        localStorage.setItem('lng', language);
     }, [language]);
 
     const location = useLocation().pathname;
@@ -28,7 +29,7 @@ function Header() {
         {
           key: '1',
           label: (
-            <button onClick={()=>setLanguage(["en"])} className={`${language[0]==='en'?"text-[green] font-bold":''}`} rel="noopener noreferrer">
+            <button onClick={()=>setLanguage("en")} className={`${language==='en'?"text-[green] font-bold":''}`} rel="noopener noreferrer">
               English
             </button>
           ),
@@ -36,7 +37,7 @@ function Header() {
         {
           key: '2',
           label: (
-            <button className={`${language[0]==='ru'?"text-[green] font-bold":''}`} onClick={()=>setLanguage(["ru"])} rel="noopener noreferrer" >
+            <button className={`${language==='ru'?"text-[green] font-bold":''}`} onClick={()=>setLanguage("ru")} rel="noopener noreferrer" >
               Russian
             </button>
           ),
@@ -44,7 +45,7 @@ function Header() {
         {
           key: '3',
           label: (
-            <button className={`${language[0]==='uz'?"text-[green] font-bold":''}`} onClick={()=>setLanguage(["uz"])} rel="noopener noreferrer" >
+            <button className={`${language==='uz'?"text-[green] font-bold":''}`} onClick={()=>setLanguage("uz")} rel="noopener noreferrer" >
               Uzbek
             </button>
           ),

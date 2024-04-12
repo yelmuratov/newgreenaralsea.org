@@ -2,12 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../axios/api';
 
-interface Donaters {
-  donaters:Idonater[],
-  totalPage: number,
-  isLoading: boolean,
-  isFailed: boolean,
-}
+
 
 const initialState: Donaters = {
   totalPage: 1,
