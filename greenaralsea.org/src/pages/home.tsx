@@ -13,6 +13,7 @@ import { AppDispatch } from "../redux/store";
 import { useAppSelector } from "../hooks/hooks";
 import { v4 as uuidv4 } from "uuid";
 import { useTranslation } from "react-i18next";
+import { setModal } from "../redux/reducers/paysys";
 
 const Home = () => {
   const [sortType, setSortType] = useState("recent");
@@ -57,6 +58,9 @@ const Home = () => {
   });
 
   const { t } = useTranslation();
+  const handleDonation = () => {
+    dispatch(setModal({modalType: 'donation', isOpen: true}));
+}
 
   return (
     <>
@@ -98,8 +102,8 @@ const Home = () => {
                       </span>
                       <span className="absolute inset-0"></span>
                     </a>
-                    <a
-                      href="#"
+                    <button
+                      onClick={handleDonation}
                       className="relative border inline-flex items-center justify-center sm:justify-start text-xs md:text-[14px] w-full sm:w-auto px-12 md:px-12 py-2 md:py-3 overflow-hidden text-black hover:text-white group hover:bg-gray-50"
                     >
                       <span className="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
@@ -120,7 +124,7 @@ const Home = () => {
                         </svg>
                       </span>
                       <span className="relative uppercase font-bold">uzs</span>
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>

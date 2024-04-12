@@ -5,6 +5,8 @@ import { useEffect } from "react";
 import { AppDispatch } from "../redux/store";
 import { useDispatch } from "react-redux";
 import { fetchArticles, fetchFAQ, fetchGreenChampions, fetchPartners, fetchTeamMembers, fetchTotalTrees, fetchYoutubeVideos } from "../redux/reducers/microServices";
+import DonateModal from "../components/donationForm";
+import DonateInfoPage from "../components/confirmDonation";
 
 
 const Root = () => {
@@ -20,6 +22,8 @@ const Root = () => {
   }, [dispatch]);
   return (
     <>
+    <DonateModal />
+    <DonateInfoPage />
     <Header />
     <main>
         <Outlet />

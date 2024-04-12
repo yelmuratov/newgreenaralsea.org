@@ -4,7 +4,9 @@ import type { MenuProps } from 'antd';
 import { Dropdown } from 'antd';
 import { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import { setModal } from "../redux/reducers/paysys";
 
 function Header() {
     const [scroll, setScroll] = useState(false);
@@ -92,6 +94,8 @@ function Header() {
         }
     ];
 
+    const dispatch = useDispatch();
+
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             setScroll(true);
@@ -99,6 +103,10 @@ function Header() {
             setScroll(false);
         }
     });
+
+    const handleDonation = () => {
+        dispatch(setModal({modalType: 'donation', isOpen: true}));
+    }
     
     return (
         <header className={`backdrop-blur-md bg-[#000]/30 md:${scroll ? 'bg-white' : 'bg-transparent'} lg:${scroll ? 'bg-white' : 'bg-transparent'}   fixed w-full z-20 top-0 start-0`}>
@@ -115,13 +123,13 @@ function Header() {
                                 <span className={`relative text-white w-full text-left  transition-colors duration-200 ease-in-out group-hover:text-white uppercase`}>usd</span>
                                 <span className="absolute inset-0 "></span>
                             </a>
-                            <a href="#" className={`relative ${scroll ? "border" : ""}  inline-flex items-center lg:md:px-12 font-bold px-4 py-3 overflow-hidden text-[8px] md:text-[14px]  bg-white hover:text-white group hover:bg-gray-50`}>
+                            <button onClick={handleDonation} className={`relative ${scroll ? "border" : ""}  inline-flex items-center lg:md:px-12 font-bold px-4 py-3 overflow-hidden text-[8px] md:text-[14px]  bg-white hover:text-white group hover:bg-gray-50`}>
                                 <span className="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                                 <span className="absolute right-0 flex items-center justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                                     <svg className="w-5 h-5 hidden md:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                 </span>
                                 <span className="relative uppercase font-bold">uzs</span>
-                            </a>
+                            </button>
                         </div>
                         <Dropdown menu={{ items: languagesItems }} autoFocus  placement="bottomLeft" arrow>
                                 <button className="text-white mt-2 order-3 roboto-bold ml-4">{<i className={`text-[20px] ${scroll ? 'text-[#fff]' : "text-[#000]"}  fa-solid fa-earth-americas`}></i>}</button>

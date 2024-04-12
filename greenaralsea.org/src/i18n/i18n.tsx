@@ -4,7 +4,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 
 i18n
     .use(LanguageDetector).use(initReactI18next).init({
-        debug: true,
+        debug: false,
         lng: 'en',
         resources: {
             en: {
@@ -234,10 +234,10 @@ i18n
                     },
                     conrtibutions:"Hissa qo'shganlar",
                     "aralTragedy": {
-                      "description": "Qurg'oqchilikka chidamli saxaul daraxtini Orolning quruq tubiga ekish bu fojiyani barcha uchun yangi imkoniyatlarga aylantirishning eng yaxshi usulidir.",
+                      "description": "Qurg'oqchilikka chidamli saksavul daraxtini Orolning quruq tubiga ekish bu fojiyani barcha uchun yangi imkoniyatlarga aylantirishning eng yaxshi usulidir.",
                       "totalTrees": "Jami daraxtlar:",
                       "treeCount": "65983",
-                      "callToAction": "Buni amalga oshiraylik!"
+                      "callToAction": "Buni birgalikda amalga oshiraylik!"  
                     },
                     mostAmount:"Eng ko'p",
                     mostRecent:"Eng so'nggi",

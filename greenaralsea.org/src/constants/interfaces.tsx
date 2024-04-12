@@ -56,3 +56,27 @@ interface IMicroService {
     description: string,
     avatar: string,
 }
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface ITransactionDetails {
+    VENDOR_ID: string,
+    MERCHANT_TRANS_ID: string,
+    MERCHANT_TRANS_AMOUNT: string,
+    MERCHANT_CURRENCY: string,
+    MERCHANT_TRANS_NOTE: string,
+    MERCHANT_TRANS_DATA:string,
+    MERCHANT_TRANS_RETURN_URL: string
+    SIGN_TIME: number,
+    SIGN_STRING: string
+    }
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+interface IDonationDetails{
+    amount:string
+    display_name:string
+    email:string
+    message:string
+    anonymous:boolean
+    is_gift:boolean
+    payment_method:number
+}
