@@ -18,7 +18,7 @@ interface IArgs {
 
 export const fetchDonaters = createAsyncThunk(
     'donaters/fetchDonaters',
-    async (arg: IArgs, thunkAPI) => {
+    async (arg: IArgs) => {
         const response = await axios.get(`donation/list/most/${arg.sort}/?page=${arg.page}`);
         // Return only the data part of the response, which should be serializable
         return response.data;
