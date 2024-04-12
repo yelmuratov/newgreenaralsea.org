@@ -8,6 +8,7 @@ import './i18n/i18n.tsx'
 
 // Styles
 import './index.css'
+import News from './pages/news.tsx';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { path: '/', element: <Home /> },
       { path: '/contact', element: <Contact /> },
+      { path: '/news', element: <News /> },
     ],
   }
 ]);

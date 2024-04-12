@@ -27,3 +27,16 @@ interface IPartners {
     is_link_enabled: boolean,
     logo: string
 }
+
+interface IMicroService {
+    totalTrees: number,
+    YoutubeVideo: IVideos[],
+    Partners: IPartners[],
+    greenChampions: IPartners[],
+    VideosisLoading: boolean,
+    VideosisFailed: boolean,
+    news: INews[],
+    isArticlesLoading?: boolean,
+    isArticlesFailed?: boolean,
+    selectedArticle?: INews | null,
+  }

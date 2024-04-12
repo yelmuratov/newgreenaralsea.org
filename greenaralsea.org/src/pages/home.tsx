@@ -1,5 +1,4 @@
 import {useEffect, useState } from "react";
-import Requests from "../axios/requests";
 import CountUp from 'react-countup';
 import 'react-loading-skeleton/dist/skeleton.css'
 import { List,Pagination } from 'antd';
@@ -12,63 +11,50 @@ import { useDispatch } from "react-redux";
 import { fetchDonaters } from "../redux/reducers/donaters";
 import { AppDispatch } from "../redux/store";
 import { useAppSelector } from "../hooks/hooks";
+import { fetchGreenChampions, fetchPartners, fetchTotalTrees, fetchYoutubeVideos } from "../redux/reducers/microServices";
+import { v4 as uuidv4 } from 'uuid';
+import { fetchArticles } from "../redux/reducers/microServices";
 
 const Home = () => {
-  const [totalTrees, setTotalTrees] = useState(0);
   const [sortType, setSortType] = useState('recent');
-  const [Videos, setVideos] = useState<IVideos[]>([]);
-  const [news, setNews] = useState<INews[]>([]);
-  const [partners, setPartners] = useState<IPartners[]>([]);
-  const [greenChampions, setGreenChampions] = useState<IPartners[]>([]);
   const [page, setPage] = useState(1);
   const donaters = useAppSelector(state => state.DonaterSlice.donaters);
   const totalPage = useAppSelector(state => state.DonaterSlice.totalPage);
   const DonaterLoading = useAppSelector(state => state.DonaterSlice.isLoading);
+  const totalTrees = useAppSelector(state => state.microServices.totalTrees);
+  const YoutubeVideos = useAppSelector(state => state.microServices.YoutubeVideo);
+  const YouTubeVideoLoading = useAppSelector(state => state.microServices.VideosisLoading);
+  const partners = useAppSelector(state => state.microServices.Partners);
+  const greenChampions = useAppSelector(state => state.microServices.greenChampions);
+  const news = useAppSelector(state => state.microServices.news);
+  const articlesLoading = useAppSelector(state => state.microServices.isArticlesLoading);
+
 
   // Methods
-  const getTrees = async () => {
-    const response = await Requests.getTotalTrees();
-    setTotalTrees(response.data.total_donations.amount__sum);
-  }
-
-  const getVideos = async () => {
-    const response = await Requests.GetVideosFromsServer();
-    setVideos(response);
-  }
-
-  const getArticles = async () => {
-    const response = await Requests.getArticlesFromServer();
-    setNews(response);
-  }
-
-  const getPartners = async () => {
-    const response = await Requests.getPartners();
-    setPartners(response);
-  }
-
-  const getGreenChampions = async () => {
-    const response = await Requests.getGreenChampions();
-    setGreenChampions(response);
-  }
 
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDonaters({ page: page, sort: sortType }));
   }, [dispatch,page,sortType]);
-  
 
   useEffect(() => {
-    getTrees();
-    getVideos();
-    getArticles();
-    getPartners();
-    getGreenChampions();
-  }, []);
+    dispatch(fetchTotalTrees());
+    dispatch(fetchYoutubeVideos());
+    dispatch(fetchGreenChampions());
+    dispatch(fetchPartners());
+    dispatch(fetchArticles());
+  }, [dispatch]);
 
-  useEffect(() => {
-    console.log(DonaterLoading)
-  }, [DonaterLoading])
+  const [medium, setMedium] = useState(false);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 1024) {
+      setMedium(true);
+    } else {
+      setMedium(false);
+    }
+  });
 
   return (
     <>
@@ -88,7 +74,7 @@ const Home = () => {
                   new opportunities for all.</p>
                 <div className="flex flex-col items-center justify-center sm:flex-row md:block items-center lg:order-2 mt-4 sm:mt-8">
                   <div className="donate-btns lg:block">
-                    <a href="#" className="relative bg-[#00c881] inline-flex items-center justify-center sm:justify-start text-xs md:text-[14px] w-full sm:w-auto px-12 md:px-12 py-2 md:py-3 overflow-hidden font-bold  group mb-2 sm:mb-0 sm:mr-4">
+                    <a href="https://www.every.org/undp/f/greenaralsea#/donate/card" className="relative bg-[#00c881] inline-flex items-center justify-center sm:justify-start text-xs md:text-[14px] w-full sm:w-auto px-12 md:px-12 py-2 md:py-3 overflow-hidden font-bold  group mb-2 sm:mb-0 sm:mr-4">
                       <span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-1 absolute left-0 top-0 bg-[#0e2b5c] opacity-[3%]"></span>
                       <span className="absolute top-0 left-0 w-48 h-48 -mt-2 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-[#0e2b5c] opacity-100 group-hover:-translate-x-8"></span>
                       <span className="relative w-full text-center sm:text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white uppercase">usd</span>
@@ -135,7 +121,7 @@ const Home = () => {
                   <span className="relative w-full text-center sm:text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white uppercase">contribute in uzs</span>
                   <span className="absolute inset-0"></span>
                 </a>
-                <a href="#" className="relative border inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm md:text-[14px] w-full sm:w-auto px-2 sm:px-4 md:px-8 py-2 sm:py-3 overflow-hidden text-black hover:text-white group hover:bg-gray-50">
+                <a href="https://www.every.org/undp/f/greenaralsea#/donate/card" className="relative border inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm md:text-[14px] w-full sm:w-auto px-2 sm:px-4 md:px-8 py-2 sm:py-3 overflow-hidden text-black hover:text-white group hover:bg-gray-50">
                   <span className="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
                   <span className="absolute right-0 flex items-center justify-center sm:justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
                     <svg className="w-5 h-5 hidden sm:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
@@ -184,8 +170,8 @@ const Home = () => {
           <h1 className="text-center text-4xl md:text-[38px] roboto-bold text-white py-8 md:pt-16 px-4">WHY IT IS TIME TO ACT NOW</h1>
         </div>
         <div data-aos="fade-up" className="grid grid-cols-1 md:grid-cols-2 grid-rows-2 px-4 md:px-20 max-w-[1700px] gap-4 mt-4 md:-mt-60 mx-auto">
-          {Videos.map((video, index) => (
-            <YouTubeEmbed key={index} embedId={extractYouTubeEmbedId(video.link)} fade={""} />
+          {YoutubeVideos.map((video, index) => (
+            YouTubeVideoLoading? <Skeleton key={uuidv4()} height={300}/>: <YouTubeEmbed key={index} embedId={extractYouTubeEmbedId(video.link)} fade={""} />
           ))}
         </div>
         <div id="tragedy" className="pb-8 hidden md:block"></div>
@@ -219,9 +205,9 @@ const Home = () => {
       <section data-aos="fade-up" className="news mt-16 pb-24 border-b mb-12">
         <div className="container mx-auto px-8" data-aos="fade-up">
           <h1 className="text-[35px] roboto-bold mb-8 md:mb-4">Aral News</h1>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {news.slice(0, 3).map((article, indx) => (
-              <NewsCard title={article.title} content={article.description} image={article.image} key={indx} />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {news.slice(0, medium?4:3).map((article, indx) => (
+              articlesLoading? <Skeleton key={indx} height={300}/>: <NewsCard article={article} key={indx} />
             ))}
           </div>
         </div>
