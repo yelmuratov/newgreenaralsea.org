@@ -20,6 +20,7 @@ const Root = () => {
     dispatch(fetchFAQ());
     dispatch(fetchTeamMembers());
   }, [dispatch]);
+  
   return (
     <>
     <DonateModal />
