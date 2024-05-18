@@ -71,7 +71,10 @@ const Home = () => {
             <div className="md:mt-4 lg:px-0 z-1000 top-40  absolute md:top-60 lg:right-80 md:right-16 bottom-0 text-center h-[350px] md:h-[450px] md:w-[700px] pt-4 sm:py-8 font font-sans bg-white shadow-md rounded-lg shadow dark:border-gray-700">
               <div className="card-content">
                 <div className="md:mt-4">
-                  <h1 className="font-bold text-lg sm:text-[32px] md:mb-4 select-none">
+                <p className="sm:mt-8 px-4 leading-[20px] sm:px-24 leading-8 font-serif select-none text-sm sm:text-[16px]">
+                  {t("aralTragedy.description")}
+                </p>
+                  <h1 className="font-bold text-lg sm:text-[32px] md:my-4 select-none">
                     {t("aralTragedy.totalTrees")}
                   </h1>
                   <h1 className="font-bold text-lg sm:text-[32px] select-none">
@@ -86,45 +89,44 @@ const Home = () => {
                     {t("aralTragedy.callToAction")}
                   </h1>
                 </div>
-                <p className="sm:mt-8 px-4 leading-[20px] sm:px-24 leading-8 font-serif select-none text-sm sm:text-[17px]">
-                  {t("aralTragedy.description")}
-                </p>
                 <div className="flex flex-col items-center justify-center sm:flex-row md:block items-center lg:order-2 mt-4 sm:mt-8">
                   <div className="donate-btns lg:block">
-                    <a
-                      href="https://www.every.org/undp/f/greenaralsea#/donate/card"
-                      className="relative bg-[#00c881] inline-flex items-center justify-center sm:justify-start text-xs md:text-[14px] w-full sm:w-auto px-12 md:px-12 py-2 md:py-3 overflow-hidden font-bold  group mb-2 sm:mb-0 sm:mr-4"
+                  <button 
+                  onClick={handleDonation}
+                  className="relative bg-[#00c881] inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm md:text-[14px] w-full sm:w-auto px-2 sm:px-4 md:px-8 py-2 sm:py-3 overflow-hidden font-bold group mb-2 sm:mb-0 sm:mr-4"
+                >
+                  <span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-1 absolute left-0 top-0 bg-[#0e2b5c] opacity-[3%]"></span>
+                  <span className="absolute top-0 left-0 w-64 h-64 -mt-2 transition-all duration-500 ease-in-out rotate-45 -translate-x-80 -translate-y-32 bg-[#0e2b5c] opacity-100 group-hover:-translate-x-8"></span>
+                  <span className="relative w-full text-center sm:text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white uppercase">
+                    {t("home.contributeUZS")}
+                  </span>
+                  <span className="absolute inset-0"></span>
+                </button>
+                <a
+                  href="https://www.every.org/undp/f/greenaralsea#/donate/card"
+                  className="relative border inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm md:text-[14px] w-full sm:w-auto px-2 sm:px-4 md:px-8 py-2 sm:py-3 overflow-hidden text-black hover:text-white group hover:bg-gray-50"
+                >
+                  <span className="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
+                  <span className="absolute right-0 flex items-center justify-center sm:justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
+                    <svg
+                      className="w-5 h-5 hidden sm:block"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      <span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-1 absolute left-0 top-0 bg-[#0e2b5c] opacity-[3%]"></span>
-                      <span className="absolute top-0 left-0 w-48 h-48 -mt-2 transition-all duration-500 ease-in-out rotate-45 -translate-x-56 -translate-y-24 bg-[#0e2b5c] opacity-100 group-hover:-translate-x-8"></span>
-                      <span className="relative w-full text-center sm:text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white uppercase">
-                        usd
-                      </span>
-                      <span className="absolute inset-0"></span>
-                    </a>
-                    <button
-                      onClick={handleDonation}
-                      className="relative border inline-flex items-center justify-center sm:justify-start text-xs md:text-[14px] w-full sm:w-auto px-12 md:px-12 py-2 md:py-3 overflow-hidden text-black hover:text-white group hover:bg-gray-50"
-                    >
-                      <span className="absolute left-0 block w-full h-0 transition-all bg-indigo-600 opacity-100 group-hover:h-full top-1/2 group-hover:top-0 duration-400 ease"></span>
-                      <span className="absolute right-0 flex items-center justify-center sm:justify-start w-10 h-10 duration-300 transform translate-x-full group-hover:translate-x-0 ease">
-                        <svg
-                          className="w-5 h-5 hidden md:block"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3"
-                          ></path>
-                        </svg>
-                      </span>
-                      <span className="relative uppercase font-bold">uzs</span>
-                    </button>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M14 5l7 7m0 0l-7 7m7-7H3"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span className="relative uppercase font-bold" id="quick">
+                    {t("home.contributeUSD")}
+                  </span>
+                </a>
                   </div>
                 </div>
               </div>
@@ -163,8 +165,8 @@ const Home = () => {
             </p>
             <div className="flex flex-col sm:flex-row md:flex-col items-center lg:order-2 mt-4 md:mt-8">
               <div className="donate-btns sm:flex md:flex items-center justify-center w-full">
-                <a
-                  href="#"
+                <button 
+                  onClick={handleDonation}
                   className="relative bg-[#00c881] inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm md:text-[14px] w-full sm:w-auto px-2 sm:px-4 md:px-8 py-2 sm:py-3 overflow-hidden font-bold group mb-2 sm:mb-0 sm:mr-4"
                 >
                   <span className="w-32 h-32 rotate-45 translate-x-12 -translate-y-1 absolute left-0 top-0 bg-[#0e2b5c] opacity-[3%]"></span>
@@ -173,7 +175,7 @@ const Home = () => {
                     {t("home.contributeUZS")}
                   </span>
                   <span className="absolute inset-0"></span>
-                </a>
+                </button>
                 <a
                   href="https://www.every.org/undp/f/greenaralsea#/donate/card"
                   className="relative border inline-flex items-center justify-center sm:justify-start text-xs sm:text-sm md:text-[14px] w-full sm:w-auto px-2 sm:px-4 md:px-8 py-2 sm:py-3 overflow-hidden text-black hover:text-white group hover:bg-gray-50"
@@ -402,12 +404,12 @@ const Home = () => {
         <div id="join"></div>
       </section>
       {/* Join us */}
-      <section className="bg-[url('/assets/contribute.jpg')] bg-no-repeat bg-cover bg-center md:h-[950px] sm:h-auto">
+      <section className="bg-[url('/assets/contribute.jpg1')] bg-no-repeat bg-cover bg-center md:h-[950px] sm:h-auto">
         <section
           className="container mx-auto py-12 text-center flex flex-col items-center px-4 sm:px-6 lg:px-8"
           data-aos="fade-up"
         >
-          <h1 className="roboto-bold text-[40px] text-[32px] md:text-[36px] lg:text-[40px] text-white text-center">
+          <h1 className="roboto-bold stroke-slate-900 text-[40px] text-[32px] md:text-[36px] lg:text-[40px] text-white text-center">
             {t("contribution.title")}
           </h1>
           {
@@ -424,7 +426,7 @@ const Home = () => {
             >
               {t("home.contributeUSD")}
             </a>
-            <button className="text-white px-8 sm:px-12 py-4 sm:py-6 roboto-bold text-lg sm:text-xl border rounded-[30px]">
+            <button onClick={handleDonation} className="text-white px-8 sm:px-12 py-4 sm:py-6 roboto-bold text-lg sm:text-xl border rounded-[30px]">
               {t("home.contributeUZS")}
             </button>
           </div>
