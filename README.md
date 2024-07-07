@@ -70,7 +70,7 @@ If you have any questions or suggestions, please contact:
 
 - **Email**: [yelimuratovsalimbay@gmail.com](mailto:your-email@example.com)
 - **GitHub**: [github](https://github.com/yelmuratov)
-- **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/salimbayyelmuratov/)
+- **LinkedIn**: [LinkedIn](https://www.linkedin.com/in/salimbayelmuratov)
 
 ## Screenshots
 
