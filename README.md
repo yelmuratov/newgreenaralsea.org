@@ -74,7 +74,8 @@ If you have any questions or suggestions, please contact:
 
 ## Screenshots
 
-![Homepage](https://github.com/yelmuratov/newgreenaralsea.org/blob/main/path/to/your/screenshot.png)
+![Homepage](https://github.com/yelmuratov/newgreenaralsea.org/blob/main/greenaralsea.org/aral.png)
+![Contributions](https://github.com/yelmuratov/newgreenaralsea.org/blob/main/greenaralsea.org/aral1.png)
 
 ## Mission Statement
 
